@@ -74,7 +74,16 @@ app.get("/api/get-users", (req, res) => {
 })
 
 // Swagger setup
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, {
+    swaggerOptions: {
+      url: "/swagger-ui/swagger.json",
+    },
+    explorer: true,
+  })
+)
 
 // Start the server
 app.listen(port, () => {
