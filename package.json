@@ -13,6 +13,7 @@
     "express": "^4.19.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-dist": "^5.17.14",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "treblle": "^1.4.3"
   }
 }

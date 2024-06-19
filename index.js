@@ -8,6 +8,12 @@ const {
 } = require("swagger-ui-dist")
 const app = express()
 const port = process.env.PORT || 3000
+const { useTreblle } = require("treblle")
+
+useTreblle(app, {
+  apiKey: "LUGSKrOTLUY1q0EdxOLVwSPyMp4KGP2m",
+  projectId: "i9IuJ6ZXfUYADC8g",
+})
 
 // Serve static files from swagger-ui-dist
 app.use(
