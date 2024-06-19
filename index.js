@@ -43,6 +43,105 @@ app.get("/api/get-users", (req, res) => {
   res.json(users)
 })
 
+// /api/get-products endpoint
+app.get("/api/get-products", (req, res) => {
+  const products = [
+    { id: 1, name: "Laptop", price: 1200 },
+    { id: 2, name: "Phone", price: 800 },
+    { id: 3, name: "Tablet", price: 600 },
+  ]
+  res.json(products)
+})
+
+// /api/get-orders endpoint
+app.get("/api/get-orders", (req, res) => {
+  const orders = [
+    { id: 1, product: "Laptop", quantity: 2, total: 2400 },
+    { id: 2, product: "Phone", quantity: 1, total: 800 },
+    { id: 3, product: "Tablet", quantity: 3, total: 1800 },
+  ]
+  res.json(orders)
+})
+
+// /api/get-comments endpoint
+app.get("/api/get-comments", (req, res) => {
+  const comments = [
+    { id: 1, user: "John Doe", comment: "Great product!" },
+    { id: 2, user: "Jane Smith", comment: "Fast shipping." },
+    { id: 3, user: "Alice Johnson", comment: "Excellent customer service." },
+  ]
+  res.json(comments)
+})
+
+// /api/get-posts endpoint
+app.get("/api/get-posts", (req, res) => {
+  const posts = [
+    {
+      id: 1,
+      title: "My First Post",
+      content: "This is the content of my first post.",
+    },
+    { id: 2, title: "Another Post", content: "Here is some more content." },
+    { id: 3, title: "Yet Another Post", content: "And even more content." },
+  ]
+  res.json(posts)
+})
+
+// /api/get-categories endpoint
+app.get("/api/get-categories", (req, res) => {
+  const categories = [
+    { id: 1, name: "Electronics" },
+    { id: 2, name: "Books" },
+    { id: 3, name: "Clothing" },
+  ]
+  res.json(categories)
+})
+
+// /api/get-tasks endpoint
+app.get("/api/get-tasks", (req, res) => {
+  const tasks = [
+    { id: 1, title: "Do laundry", completed: false },
+    { id: 2, title: "Buy groceries", completed: true },
+    { id: 3, title: "Clean house", completed: false },
+  ]
+  res.json(tasks)
+})
+
+// /api/get-messages endpoint
+app.get("/api/get-messages", (req, res) => {
+  const messages = [
+    { id: 1, from: "John Doe", message: "Hello there!" },
+    { id: 2, from: "Jane Smith", message: "Hi, how are you?" },
+    { id: 3, from: "Alice Johnson", message: "Good morning!" },
+  ]
+  res.json(messages)
+})
+
+// /api/get-notifications endpoint
+app.get("/api/get-notifications", (req, res) => {
+  const notifications = [
+    { id: 1, type: "Email", content: "You have a new email from John Doe." },
+    { id: 2, type: "SMS", content: "Your package has been delivered." },
+    { id: 3, type: "Alert", content: "Your battery is low." },
+  ]
+  res.json(notifications)
+})
+
+// /api/get-reviews endpoint
+app.get("/api/get-reviews", (req, res) => {
+  const reviews = [
+    { id: 1, product: "Laptop", review: "Amazing performance!", rating: 5 },
+    { id: 2, product: "Phone", review: "Good value for the price.", rating: 4 },
+    {
+      id: 3,
+      product: "Tablet",
+      review: "Battery life could be better.",
+      rating: 3,
+    },
+  ]
+  res.json(reviews)
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
