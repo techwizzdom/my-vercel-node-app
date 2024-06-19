@@ -3,7 +3,7 @@
   "info": {
     "title": "My Vercel Node App API",
     "version": "1.0.0",
-    "description": "A simple API to get users"
+    "description": "A simple API to get users and other resources"
   },
   "servers": [
     {
@@ -35,6 +35,316 @@
                       "email": {
                         "type": "string",
                         "example": "john.doe@example.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-products": {
+      "get": {
+        "summary": "Get products",
+        "responses": {
+          "200": {
+            "description": "A list of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Laptop"
+                      },
+                      "price": {
+                        "type": "number",
+                        "example": 1200
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-orders": {
+      "get": {
+        "summary": "Get orders",
+        "responses": {
+          "200": {
+            "description": "A list of orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "product": {
+                        "type": "string",
+                        "example": "Laptop"
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "total": {
+                        "type": "number",
+                        "example": 2400
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-comments": {
+      "get": {
+        "summary": "Get comments",
+        "responses": {
+          "200": {
+            "description": "A list of comments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "user": {
+                        "type": "string",
+                        "example": "John Doe"
+                      },
+                      "comment": {
+                        "type": "string",
+                        "example": "Great product!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-posts": {
+      "get": {
+        "summary": "Get posts",
+        "responses": {
+          "200": {
+            "description": "A list of posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "My First Post"
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "This is the content of my first post."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-categories": {
+      "get": {
+        "summary": "Get categories",
+        "responses": {
+          "200": {
+            "description": "A list of categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "Electronics"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-tasks": {
+      "get": {
+        "summary": "Get tasks",
+        "responses": {
+          "200": {
+            "description": "A list of tasks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "title": {
+                        "type": "string",
+                        "example": "Do laundry"
+                      },
+                      "completed": {
+                        "type": "boolean",
+                        "example": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-messages": {
+      "get": {
+        "summary": "Get messages",
+        "responses": {
+          "200": {
+            "description": "A list of messages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "from": {
+                        "type": "string",
+                        "example": "John Doe"
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "Hello there!"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-notifications": {
+      "get": {
+        "summary": "Get notifications",
+        "responses": {
+          "200": {
+            "description": "A list of notifications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "Email"
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "You have a new email from John Doe."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/get-reviews": {
+      "get": {
+        "summary": "Get reviews",
+        "responses": {
+          "200": {
+            "description": "A list of reviews",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
+                      "product": {
+                        "type": "string",
+                        "example": "Laptop"
+                      },
+                      "review": {
+                        "type": "string",
+                        "example": "Amazing performance!"
+                      },
+                      "rating": {
+                        "type": "integer",
+                        "example": 5
                       }
                     }
                   }
