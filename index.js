@@ -54,6 +54,9 @@ const swaggerDocument = {
   },
 }
 
+// Serve static files from the public directory
+app.use(express.static("public"))
+
 // Root endpoint
 app.get("/", (req, res) => {
   res.json({ message: "Hello, World!" })
@@ -71,19 +74,14 @@ app.get("/api/get-users", (req, res) => {
 })
 
 // Swagger setup
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument, {
-    explorer: true,
-  })
-)
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })
 
+// Error handling middleware
 app.use((req, res, next) => {
   res.status(404).send("Sorry, page not found")
 })
