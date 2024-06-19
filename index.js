@@ -1,11 +1,25 @@
 const express = require("express")
 const path = require("path")
 const swaggerUi = require("swagger-ui-express")
+const swaggerDocument = require("./swagger.json") // Ensure this file exists with your API documentation
+const {
+  SwaggerUIBundle,
+  SwaggerUIStandalonePreset,
+} = require("swagger-ui-dist")
 const app = express()
 const port = process.env.PORT || 3000
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, "public")))
+// Serve static files from swagger-ui-dist
+app.use(
+  "/api-docs",
+  express.static(path.join(__dirname, "node_modules/swagger-ui-dist"))
+)
+app.get("/api-docs", (req, res) => {
+  res.sendFile(path.join(__dirname, "node_modules/swagger-ui-dist/index.html"))
+})
+
+// Swagger setup
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Root endpoint
 app.get("/", (req, res) => {
@@ -22,18 +36,6 @@ app.get("/api/get-users", (req, res) => {
   ]
   res.json(users)
 })
-
-// Swagger setup
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(null, {
-    swaggerOptions: {
-      url: "/swagger-ui/swagger.json",
-    },
-    explorer: true,
-  })
-)
 
 // Start the server
 app.listen(port, () => {
