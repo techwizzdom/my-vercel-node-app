@@ -71,9 +71,24 @@ app.get("/api/get-users", (req, res) => {
 })
 
 // Swagger setup
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, {
+    explorer: true,
+  })
+)
 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
+})
+
+app.use((req, res, next) => {
+  res.status(404).send("Sorry, page not found")
+})
+
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send("Something broke!")
 })
