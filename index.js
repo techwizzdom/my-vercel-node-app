@@ -1,4 +1,7 @@
 const express = require("express")
+const swaggerUi = require("swagger-ui-express")
+const swaggerJsdoc = require("swagger-jsdoc")
+const fs = require("fs")
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -17,6 +20,10 @@ app.get("/api/get-users", (req, res) => {
   ]
   res.json(users)
 })
+
+// Swagger setup
+const swaggerDocument = JSON.parse(fs.readFileSync("./swagger.json", "utf8"))
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 // Start the server
 app.listen(port, () => {
