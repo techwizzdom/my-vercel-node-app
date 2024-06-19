@@ -1,61 +1,11 @@
 const express = require("express")
+const path = require("path")
 const swaggerUi = require("swagger-ui-express")
 const app = express()
 const port = process.env.PORT || 3000
 
-// OpenAPI specification
-const swaggerDocument = {
-  openapi: "3.0.0",
-  info: {
-    title: "My Vercel Node App API",
-    version: "1.0.0",
-    description: "A simple API to get users",
-  },
-  servers: [
-    {
-      url: "https://my-vercel-node-app.vercel.app",
-    },
-  ],
-  paths: {
-    "/api/get-users": {
-      get: {
-        summary: "Get users",
-        responses: {
-          200: {
-            description: "A list of users",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "array",
-                  items: {
-                    type: "object",
-                    properties: {
-                      id: {
-                        type: "integer",
-                        example: 1,
-                      },
-                      name: {
-                        type: "string",
-                        example: "John Doe",
-                      },
-                      email: {
-                        type: "string",
-                        example: "john.doe@example.com",
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-}
-
 // Serve static files from the public directory
-app.use(express.static("public"))
+app.use(express.static(path.join(__dirname, "public")))
 
 // Root endpoint
 app.get("/", (req, res) => {
@@ -77,7 +27,7 @@ app.get("/api/get-users", (req, res) => {
 app.use(
   "/api-docs",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument, {
+  swaggerUi.setup(null, {
     swaggerOptions: {
       url: "/swagger-ui/swagger.json",
     },
